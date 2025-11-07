@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>КУДЖИ ФАН БЛЯТЬ  • Minecraft</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      border: 4px solid #00ff88;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      text-shadow: 0 0 10px #00ff88;
+    }
+
+    .ip-box {
+      margin: 30px auto;
+      padding: 20px;
+      background: rgba(0, 255, 136, 0.2);
+      border: 2px solid #00ff88;
+      border-radius: 15px;
+      max-width: 500px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .ip-box:hover {
+      background: rgba(0, 255, 136, 0.4);
+      transform: scale(1.05);
+    }
+
+    .ip-box::before {
+      content: "📋 ";
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .card h2 {
+      color: #00ff88;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ul li {
+      margin: 10px 0;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "✔";
+      color: #00ff88;
+      position: absolute;
+      left: 0;
+    }
+
+    .stats {
+      text-align: center;
+      font-size: 1.4rem;
+    }
+
+    .stats span {
+      color: #00ff88;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.7);
+      margin-top: 50px;
+      font-size: 0.9rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: #00ff88;
+      color: #000;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #00cc70;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="images/logo.png" alt="Логотип сервера" class="logo">
+    <h1>КУДЖИ ФАН БЛЯТЬ</h1>
+    <p>Выживание • НЕТУ Мини-игр • НЕ Дружелюбное комьюнити</p>
+
+    <div class="ip-box" onclick="copyIP()">
+      kudji.fun
+    </div>
+    <p>Нажми на IP, чтобы скопировать!</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>О сервере</h2>
+      <p>
+       НА СЕРВЕРЕ НИХУЯ НЕТУ БЛЯТЬ - ОЧЕНЬ ТОКСИЧНЫЕ ИГРОКИ
+       ВСЕМ ОБСОЛЮТНО ПОХУЙ ЧТО У ВАС БОЛЬШОЙ ПИНГ!!!
+      </p>
+      <div class="stats">
+        <p>Онлайн: <span id="online">—</span>/100</p>
+        <p>Версия: <span>1.16.5 — 1.21.1</span></p>
+      </div>
+      <a href="#" class="btn">Вступить в Discord</a>
+    </div>
+
+    <div class="card">
+      <h2>Правила</h2>
+      <ul>
+        <li>ТОЛЬКО МТЫ</li>
+        <li>Гриферить НЕЛЬЗЯ БЛЯТЬ БАНОМ НАХУЙ КАРАЕТСЯ (если игрока нету месяц то можна</li>
+        <li>Читы = ХУЕСОС ЕБАННЫЙ</li>
+        <li>НЕ Уважай других игроков</li>
+        <li>Реклама разрешена</li>
+      </ul>
+      <a href="#" class="btn">Полные правила</a>
+    </div>
+
+    <div class="card">
+      <h2>Что у нас есть</h2>
+      <ul>
+        <li>НИХУЯ!!!</li>
+        <li>СЕРВЕР НА УЁБИЩНОМ ХОСТЕ</li>
+        <li>УЁБИЩНЫЕ ПЛАГИНЫ</li>
+        <li>АДМИНЫ КОТОРЫМ ВСЕМ НА ВАС ПОХУЙ</li>
+        <li>И ОНЛАЙН 0 БЛЯТЬ!!!!</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Команда</h2>
+      <ul>
+        <li><strong>Owner:</strong> Blender</li>
+        <li><strong>Admin:</strong> Buba</li>      
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ВашСервер. Все права защищены.</p>
+    <p>Сайт сделан с ❤️ для майнкрафтеров</p>
+  </footer>
+
+  <script>
+    // Копирование IP
+    function copyIP() {
+      navigator.clipboard.writeText("play.vashserver.ru");
+      alert("IP скопирован: kudji.fun");
+    }
+
+    // (Опционально) Подтягивание онлайна через MCSrvStat
+    fetch('https://api.mcsrvstat.us/2/play.vashserver.ru')
+      .then(r => r.json())
+      .then(data => {
+        if (data.online) {
+          document.getElementById('online').textContent = data.players.online;
+        }
+      })
+      .catch(() => {
+        document.getElementById('online').textContent = "—";
+      });
+  </script>
+</body>
+</html>
