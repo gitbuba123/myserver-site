@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>КУДЖИ ФАН БЛЯТЬ  • Minecraft</title>
+  <title>КУДЖИ ФАН БЛЯТЬ • Minecraft</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
@@ -19,6 +19,7 @@
       background-size: cover;
       color: #fff;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     header {
@@ -131,6 +132,7 @@
       border-radius: 50px;
       font-weight: bold;
       transition: 0.3s;
+      cursor: pointer;
     }
 
     .btn:hover {
@@ -138,13 +140,54 @@
       transform: translateY(-3px);
     }
 
+    /* Модальное окно */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.98);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      display: none;
+    }
+
+    .countdown {
+      font-size: 7rem;
+      font-weight: bold;
+      color: #ff0040;
+      text-shadow: 0 0 30px #ff0040, 0 0 60px #ff0040;
+      animation: pulse 0.6s infinite;
+    }
+
+    .fuckoff-img {
+      max-width: 85%;
+      max-height: 75vh;
+      border: 6px solid #ff0040;
+      border-radius: 25px;
+      box-shadow: 0 0 50px #ff0040, 0 0 100px #ff00ff;
+      animation: explode 0.7s ease-out;
+      display: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    @keyframes explode {
+      0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+      70% { transform: scale(1.1) rotate(5deg); }
+      100% { transform: scale(1) rotate(0); opacity: 1; }
+    }
+
     @media (max-width: 768px) {
-      main {
-        grid-template-columns: 1fr;
-      }
-      h1 {
-        font-size: 2.5rem;
-      }
+      main { grid-template-columns: 1fr; }
+      h1 { font-size: 2.5rem; }
+      .countdown { font-size: 4.5rem; }
+      .fuckoff-img { max-width: 95%; }
     }
   </style>
 </head>
@@ -172,7 +215,7 @@
         <p>Онлайн: <span id="online">—</span>/1488</p>
         <p>Версия: <span>1.21.10</span></p>
       </div>
-      <a href="" class="btn">ПОЙТИ НАХУЙ</a>
+      <a href="#" class="btn" onclick="goFuckOff()">ПОЙТИ НАХУЙ</a>
     </div>
 
     <div class="card">
@@ -208,18 +251,28 @@
   </main>
 
   <footer>
-    <p>&copy; 2077 ООО "ВАСЯН ПУПОК". Все права НЕ защищены.</p>
-    <p>Сайт сделан НЕ с ❤️ для ПИДОРАСОВ</p>
+    <p>© 2077 ООО "ВАСЯН ПУПОК". Все права НЕ защищены.</p>
+    <p>Сайт сделан с ❤️ для майнкрафтеров</p>
   </footer>
+
+  <!-- Модальное окно -->
+  <div id="fuckoffModal" class="modal">
+    <div id="countdown" class="countdown">4</div>
+    <img id="fuckoffImg" class="fuckoff-img" src="images/accept.jpg" alt="ПОШЁЛ НАХУЙ">
+  </div>
+
+  <!-- Звуки -->
+  <audio id="startSound" src="sounds/sabir.mp3"></audio>        <!-- Звук при запуске -->
+  <audio id="fuckoffSound" src="sounds/accept.mp3"></audio>    <!-- Звук при появлении картинки -->
 
   <script>
     // Копирование IP
     function copyIP() {
-      navigator.clipboard.writeText("kudji.fun");
+      navigator.clipboard.writeText("play.vashserver.ru");
       alert("IP скопирован: kudji.fun");
     }
 
-    // (Опционально) Подтягивание онлайна через MCSrvStat
+    // Онлайн
     fetch('https://api.mcsrvstat.us/2/play.vashserver.ru')
       .then(r => r.json())
       .then(data => {
@@ -230,7 +283,48 @@
       .catch(() => {
         document.getElementById('online').textContent = "—";
       });
+
+    // === ПОЙТИ НАХУЙ ===
+    function goFuckOff() {
+      const modal = document.getElementById('fuckoffModal');
+      const countdownEl = document.getElementById('countdown');
+      const img = document.getElementById('fuckoffImg');
+      const startSound = document.getElementById('startSound');
+      const fuckoffSound = document.getElementById('fuckoffSound');
+
+      modal.style.display = 'flex';
+      img.style.display = 'none';
+      countdownEl.style.display = 'block';
+
+      // Сброс и запуск стартового звука
+      startSound.currentTime = 0;
+      startSound.play().catch(() => {});
+
+      let time = 4;
+      countdownEl.textContent = time;
+
+      const timer = setInterval(() => {
+        time--;
+        countdownEl.textContent = time;
+
+        if (time <= 0) {
+          clearInterval(timer);
+          countdownEl.style.display = 'none';
+          img.style.display = 'block';
+
+          // Звук при появлении картинки
+          fuckoffSound.currentTime = 0;
+          fuckoffSound.play().catch(() => {});
+
+          // Убрать всё через 10 секунд
+          setTimeout(() => {
+            modal.style.display = 'none';
+            countdownEl.style.display = 'block';
+            img.style.display = 'none';
+          }, 10000);
+        }
+      }, 1000);
+    }
   </script>
 </body>
 </html>
-
